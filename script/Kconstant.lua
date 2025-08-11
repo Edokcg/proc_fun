@@ -1,0 +1,93 @@
+CARDDATA_ALIAS			=2
+CARDDATA_SETCODE		=3
+CARDDATA_TYPE			=4
+CARDDATA_LEVEL			=5
+CARDDATA_ATTRIBUTE		=6
+CARDDATA_RACE			=7
+CARDDATA_ATTACK			=8
+CARDDATA_DEFENSE		=9
+CARDDATA_LSCALE			=10
+CARDDATA_RSCALE			=11
+CARDDATA_LINK_MARKER	=12
+
+SCOPE_OCG        =0x1
+SCOPE_TCG        =0x2
+SCOPE_ANIME      =0x4
+SCOPE_ILLEGAL    =0x8
+SCOPE_VIDEO_GAME =0x10
+SCOPE_CUSTOM     =0x20
+SCOPE_SPEED      =0x40
+SCOPE_PRERELEASE =0x100
+SCOPE_RUSH       =0x200
+SCOPE_LEGEND     =0x400
+SCOPE_HIDDEN     =0x1000
+SCOPE_ZCG        =0x2000
+SCOPE_OCG_TCG    =(SCOPE_OCG | SCOPE_TCG)
+SCOPE_OFFICIAL   =(SCOPE_OCG | SCOPE_TCG | SCOPE_PRERELEASE)
+
+ATTRIBUTE_HADES        = 0x80
+
+HINT_MUSIC    = 21
+HINT_ANIME    = 22
+HINT_BGM      = 23
+HINT_AVATAR	  = 24
+
+EFFECT_GOD_IMMUNE                = 2000
+EFFECT_ULTIMATE_IMMUNE           = 2001
+EFFECT_OVERINFINITE_ATTACK       = 2002
+EFFECT_OVERINFINITE_DEFENSE      = 2003
+EFFECT_EQUIP_MONSTER             = 2004
+EFFECT_ORICA                     = 2005
+EFFECT_ORICA_SZONE               = 2006
+EFFECT_SANCT                     = 2007
+EFFECT_SANCT_MZONE               = 2008
+EFFECT_LINK_RANK                 = 2009
+EFFECT_LINK_RANK_S               = 2010
+EFFECT_RANK_LINK                 = 2011
+EFFECT_RANK_LINK_S               = 2012
+EFFECT_LEVEL_LINK                = 2013
+EFFECT_LEVEL_LINK_S              = 2014
+EFFECT_LINK_LEVEL                = 2015
+EFFECT_LINK_LEVEL_S              = 2016
+EFFECT_LEVEL_RANK_LINK           = 2017
+EFFECT_LEVEL_RANK_LINK_S         = 2018
+EVENT_OVERLAY                    = 2019
+EVENT_PREEFFECT_DRAW             = 2020
+EFFECT_INF_ATTACK                = 2021
+EFFECT_INF_DEFENSE               = 2022
+EFFECT_IMMUNE_OVERLAY            = 2023
+EFFECT_NOT_EXTRA                 = 2024
+EFFECT_ASSUME_ZERO               = 2025
+EVENT_ZERO_LP                    = 2026
+EFFECT_CHANGE_RECOVER            = 2027
+EFFECT_INCLUDE_CODE              = 2028
+EVENT_PRECHAINING                = 2029
+EVENT_PREATTACK_ANNOUNCE         = 2030
+EVENT_PRESPSUMMON_SUCCESS        = 2031
+
+LOCATION_RMZONE = 0x2000
+LOCATION_RSZONE = 0x4000
+
+OPCODE_ISOTYPE      =0x4000009000000000
+
+
+function Auxiliary.BeginPuzzle()
+	-- local e1=Effect.GlobalEffect()
+	-- e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
+	-- e1:SetCode(EVENT_TURN_END)
+	-- e1:SetCountLimit(1)
+	-- e1:SetOperation(Auxiliary.PuzzleOp)
+	-- Duel.RegisterEffect(e1,0)
+	local e2=Effect.GlobalEffect()
+	e2:SetType(EFFECT_TYPE_FIELD)
+	e2:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	e2:SetCode(EFFECT_SKIP_DP)
+	e2:SetTargetRange(1,0)
+	Duel.RegisterEffect(e2,0)
+	-- local e3=Effect.GlobalEffect()
+	-- e3:SetType(EFFECT_TYPE_FIELD)
+	-- e3:SetProperty(EFFECT_FLAG_PLAYER_TARGET)
+	-- e3:SetCode(EFFECT_SKIP_SP)
+	-- e3:SetTargetRange(1,0)
+	-- Duel.RegisterEffect(e3,0)
+end
